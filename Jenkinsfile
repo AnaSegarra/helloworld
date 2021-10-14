@@ -3,6 +3,8 @@ pipeline {
     tools {
         // version de maven instalada y configurada con el nombre de "M3"
         maven "M3"
+        // version de docker instalada y configurada con el nombre de "docker"
+        dockerTool "docker"
     }
     stages {
         stage("Maven Build"){
@@ -14,6 +16,7 @@ pipeline {
         stage("Docker Build"){
             steps {
                 echo 'Build project image'
+                sh "docker build -t simple-app ."
             }
         }
         stage("Deploy"){
