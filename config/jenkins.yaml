@@ -16,7 +16,7 @@ spec:
         - name: jenkins
           image: jenkins/jenkins:lts-jdk11
           securityContext:
-            runAsUser: 0
+            runAsUser: 0 # run jenkins logged in as root
           # command: ['/bin/sh', '-c']
           # args: ['apt-get update']
           ports:
