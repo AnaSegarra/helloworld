@@ -1,0 +1,34 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-app
+  labels:
+    app: simple-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: simple-app
+  template:
+    metadata:
+      labels:
+        app: simple-app
+    spec:
+      containers:
+        - name: simple-app
+          image: simple-app
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000 #debe coincidir con el targetPort del Service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-app-svc
+spec:
+  selector:
+    app: simple-app-project
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 8000
