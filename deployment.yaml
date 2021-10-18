@@ -19,16 +19,17 @@ spec:
           image: simple-app
           imagePullPolicy: Never
           ports:
-            - containerPort: 8000 #debe coincidir con el targetPort del Service
+            - containerPort: 8080 #debe coincidir con el targetPort del Service
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: simple-app-svc
 spec:
+  type: NodePort
   selector:
-    app: simple-app-project
+    app: simple-app
   ports:
     - name: http
-      port: 3000
-      targetPort: 8000
+      port: 8080
+      targetPort: 8080
