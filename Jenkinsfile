@@ -24,8 +24,9 @@ pipeline {
                 echo 'Deploy to K8s'
                 sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl"'
                 sh 'chmod u+x ./kubectl'
-                sh './kubectl version --client'
-                sh './kubectl get pods'
+                sh 'mv ./kubectl /usr/local/bin/kubectl'
+                sh 'kubectl version --client'
+                sh 'kubectl apply -f deployment.yaml'
             }
         }
     }
