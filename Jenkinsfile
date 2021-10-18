@@ -27,6 +27,7 @@ pipeline {
                 sh 'mv ./kubectl /usr/local/bin/kubectl'
                 sh 'kubectl version --client'
                 sh 'kubectl apply -f deployment.yaml'
+                sh 'kubectl rollout restart deployment simple-app' // restart pod to apply code changes
             }
         }
     }
