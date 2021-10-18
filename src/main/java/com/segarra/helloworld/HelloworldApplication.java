@@ -13,7 +13,7 @@ public class HelloworldApplication {
 	@RequestMapping
 	public String home(){
 		System.out.println("Process request");
-		return "Hello, Ana!";
+		return "Hello, world!";
 	}
 
 	public static void main(String[] args) {
